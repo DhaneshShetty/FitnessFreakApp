@@ -1,21 +1,23 @@
 package com.ddevs.getfit
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.fitness.Fitness
-import com.google.android.gms.fitness.HistoryClient
-import com.google.android.gms.fitness.data.DataType
-import com.google.android.gms.fitness.data.Field
-import com.google.firebase.auth.FirebaseAuth
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val navHostFragment:NavHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        NavigationUI.setupWithNavController(
+                bottomNavigationView,
+                navHostFragment.navController
+            )
+    }
         /*val historyClient:HistoryClient= Fitness.getHistoryClient(this, GoogleSignIn.getLastSignedInAccount(this)!!)
         val textView:TextView=findViewById(R.id.data)
         historyClient.readDailyTotal(DataType.TYPE_MOVE_MINUTES).addOnCompleteListener { result->
@@ -23,4 +25,3 @@ class MainActivity : AppCompatActivity() {
             textView.text = ans.toString()
         }*/
     }
-}

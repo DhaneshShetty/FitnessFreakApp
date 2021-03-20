@@ -27,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
             .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestProfile()
+            .requestEmail()
             .requestScopes(Scope("https://www.googleapis.com/auth/fitness.activity.read"),Scope("https://www.googleapis.com/auth/fitness.body.read"))
             .build()
         googleSignInClient=GoogleSignIn.getClient(this,googleSignInOptions)
