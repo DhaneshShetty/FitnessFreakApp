@@ -16,7 +16,7 @@
         android:paddingVertical="4dp"
         android:text="Continue with Google"
         app:cornerRadius="20dp"
-        app:icon="@drawable/common_google_signin_btn_icon_light_focused"
+        app:icon="@drawable/googleg_standard_color_18"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

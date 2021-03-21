@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.ddevs.getfit.databinding.FragmentProfileBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.fitness.Fitness
 
 
 class ProfileFragment : Fragment() {
@@ -25,7 +27,8 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         profileBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_profile,container,false)
-        viewModel= ViewModelProvider(this,ProfileViewModelFactory(requireActivity())).get(ProfileViewModel::class.java)
+        viewModel= ViewModelProvider(this).get(ProfileViewModel::class.java)
+        viewModel.historyClient= Fitness.getHistoryClient(requireActivity(), GoogleSignIn.getLastSignedInAccount(context)!!)
         profileBinding.viewModel=viewModel
         viewModel.fetchUserData()
         viewModel.fetchFromGoogleAPI()
